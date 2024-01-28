@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MessageBox Demo</title>
+    
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      button {
+        margin: 5px;
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const modalConfig = {
+          warningTitleColor: "blue",
+          warningFontSize: "18pt",
+          warningBackgroundColor: "red",
+          inputPrefix: "🛈 ",
+          infoSuffix: "",
+          titleColor: "black",
+          confirmationButtonBackgroundColor: "magenta",
+          spaceButtons: "",
+          // and a lot more options all optional
+        };
+        // editModal(modalConfig);
+      });
+
+      function feedback(param1, param2) {
+        if (param1 == "gotIt") {
+          alert("You got it :)\n" + param2);
+        } else {
+          alert("You didnt get it? :(\n" + param2);
+        }
+      }
+
+      function warnActionConfirmation() {
+        alert("You confirmed the warning!");
+      }
+
+      function warnActionCancelled() {
+        alert("You dismissed the warning");
+      }
+
+      function loadNewDesign() {
+        const modalConfig = {
+          warningTitleColor: "blue",
+          warningFontSize: "25pt",
+          warningBackgroundColor: "red",
+          infoPreffix: "➤ ",
+          confirmationButtonBackgroundColor: "magenta",
+          spaceButtons: "",
+          backgroundColor: "linear-gradient(50deg,rgb(85, 161, 132) 0%,rgb(3, 174, 253) 60%,rgb(85, 161, 132) 99%)",
+          cancelButtonCursor: "crosshair",
+          confirmationButtonMargin: "0px",
+          cancelButtonMargin: "0px",
+          // and a lot more optional options 
+        };
+        editModal(modalConfig);
+      }
+
+
+    </script>
+  </head>
+  <body>
+    <button
+      onclick="messagebox_info(header='Information Header', detail='<h1>This is a information</h1><hr><h3>This messagebox can execute most of the html css and script tags</h3><p>This is only possible due to the <strong>allowHTML=true</strong> parameter!</p><br><button style=\'background:blue\' onclick=alert(\'Hello_World\')>Click me</button>', buttons={confirmationButton: 'I understand!',  cancelButton:'I don\'t get it'}, options={ confirmationCallback: feedback, confirmationParams: ['gotIt','Thats great!'], cancelCallback: feedback, cancelParams: ['didntGetIt', 'Im sorry to hear that! Maybe read the documentation again?'] }, allowHTML=true)"
+    >
+      Show an infobox
+    </button>
+
+    <button
+      onclick="messagebox_warning(header='Warning Header',  detail='<h1>This is a warning</h1><hr><h3>As you can see the html tags don\'t work because the <strong>allowHTML</strong> parameter is not set!', buttons={confirmationButton: 'Ok!',  cancelButton:'Cancel!'}, options={ confirmationCallback: warnActionConfirmation, confirmationParams: [], cancelCallback: warnActionCancelled, cancelParams: [] })"
+    >
+      Show a warningbox
+    </button>
+
+    <button
+      onclick="messagebox_error(header='Error Header', detail=`<h1 style='color:red;font-family:cursive;'>This is an error with custom css!</h1><hr>As you can see, you can also use custom CSS if the <strong>allowHTML</strong> parameter is set to true!<br>It doesn't make much sense to have a cancel button here, so we can just leave it out. You also dont have to bind a function to the confirm or cancel event if you don\'t like to!`, buttons={confirmationButton: 'Good!'}, options={},allowHTML=true)"
+    >
+      Show an errorbox
+    </button>
+    <br>
+    <button onclick="messagebox_info(header='NEW DESIGN', detail='You can customize most of the style options! Click \'LOAD\' to load a new design, which is applied until you refresh the page',buttons={confirmationButton: 'LOAD',  cancelButton:'Cancel'}, options={ confirmationCallback: loadNewDesign, confirmationParams: [] })">Apply new design</button>
+  </body>
+</html>
