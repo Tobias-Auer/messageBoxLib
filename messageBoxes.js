@@ -101,11 +101,6 @@ document.body.insertBefore(customModal, document.body.firstChild);
 var customOverlay = document.createElement("div");
 customOverlay.id = "custom-overlay";
 document.body.insertBefore(customOverlay, document.body.firstChild);
-var link = document.createElement("link");
-link.rel = "stylesheet";
-link.type = "text/css";
-link.href = "style.css";
-document.head.appendChild(link);
 
 /////
 
