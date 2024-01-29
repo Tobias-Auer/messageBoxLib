@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2024 Tobias Auer
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 var infoPrefix = "🛈 ";
 var infoSuffix = " 🛈";
 var warningPrefix = "⚠ ";
@@ -35,7 +51,7 @@ var confirmationButtonMargin = "30px 10px 0px 0px";
 var confirmationButtonCursor = "pointer";
 var confirmationButtonBorderRadius = "4px";
 
-var cancelButtonBackgroundColor = "#ff3333"; // Example color for cancel button
+var cancelButtonBackgroundColor = "#ff3333";
 var cancelButtonBorder = "none";
 var cancelButtonColor = "white";
 var cancelButtonPadding = "5px 10px";
@@ -49,53 +65,47 @@ var cancelButtonBorderRadius = "4px";
 
 var spaceButtons = "space-between";
 
-// Erstelle das Haupt-Element (.custom-modal)
 var customModal = document.createElement("div");
 customModal.className = "custom-modal";
 customModal.id = "custom-modal";
 customModal.style.background = "rgb(210,230,240)";
 
-// Erstelle den Header-Bereich (.modal-header)
 var modalHeader = document.createElement("div");
 modalHeader.className = "modal-header";
 
-// Erstelle den Titelbereich (.title)
 var title = document.createElement("div");
 title.className = "title";
 title.id = "modal-title";
 title.style.margin = "auto";
 title.textContent = "(ERROR)";
 
-// Erstelle den Schließen-Button (.close-button)
 var closeButton = document.createElement("button");
 closeButton.className = "close-button";
 closeButton.setAttribute("data-close-button", "");
 closeButton.id = "custom-close-button";
 closeButton.textContent = "×";
-// closeButton.onclick = function () {
-//   closeModal(this.closest(".custom-modal"));
-// };
 
-// Füge Titel und Schließen-Button zum Header hinzu
 modalHeader.appendChild(title);
 modalHeader.appendChild(closeButton);
 
-// Erstelle den Body-Bereich (.modal-body)
 var modalBody = document.createElement("div");
 modalBody.className = "modal-body";
 modalBody.id = "modal-content";
 modalBody.textContent = "(ERROR)";
 
-// Füge Header und Body zur Haupt-Modal-Box hinzu
 customModal.appendChild(modalHeader);
 customModal.appendChild(modalBody);
 
-// Füge die Modal-Box und das Overlay zum Anfang des Body-Elements hinzu
 document.body.insertBefore(customModal, document.body.firstChild);
 
 var customOverlay = document.createElement("div");
 customOverlay.id = "custom-overlay";
 document.body.insertBefore(customOverlay, document.body.firstChild);
+var link = document.createElement("link");
+link.rel = "stylesheet";
+link.type = "text/css";
+link.href = "style.css";
+document.head.appendChild(link);
 
 /////
 
@@ -121,7 +131,7 @@ const closeButtonElement = document.getElementById("custom-close-button");
 function messagebox_info(header, detail, buttons, options, allowHTML) {
   overlay.onclick = null;
   closeButtonElement.onclick = null;
-  // Display the detail and add an "OK" button
+
   modal_body.innerHTML =
     (allowHTML ? detail : escapeHTML(detail)) +
     `<br><div style='display: flex; justify-content: ${spaceButtons};'>` +
@@ -155,7 +165,6 @@ function messagebox_info(header, detail, buttons, options, allowHTML) {
       : '<div style="display:None" id=cancelButton></div>') +
     "</div>";
 
-  // Set the modal title
   modal_title.innerHTML = `<span style="color:${infoTitleColor};font-weight: ${infoTitleFontWeight};font-size: ${infoFontSize};background-color:${infoBackgroundColor};font-family:${infoTitleFont};">${infoPrefix}${
     allowHTML ? header : escapeHTML(header)
   }${infoSuffix}</span>`;
@@ -177,7 +186,6 @@ function messagebox_info(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Attach the onclick event handler for the OK button
   const okButton = document.getElementById("okButton");
   okButton.onclick = function () {
     closeModal(modal);
@@ -186,7 +194,6 @@ function messagebox_info(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Attach the onclick event handler for the Cancel button
   const cancelButton = document.getElementById("cancelButton");
   cancelButton.onclick = function () {
     closeModal(modal);
@@ -194,7 +201,7 @@ function messagebox_info(header, detail, buttons, options, allowHTML) {
       options.cancelCallback(...options.cancelParams);
     }
   };
-  // Open the modal
+
   openModal(modal);
 }
 
@@ -202,7 +209,6 @@ function messagebox_warning(header, detail, buttons, options, allowHTML) {
   overlay.onclick = null;
   closeButtonElement.onclick = null;
 
-  // Display the detail and add "OK" and "Cancel" buttons
   modal_body.innerHTML =
     (allowHTML ? detail : escapeHTML(detail)) +
     `<br><div style='display: flex; justify-content: ${spaceButtons};'>` +
@@ -236,7 +242,6 @@ function messagebox_warning(header, detail, buttons, options, allowHTML) {
       : '<div style="display:None" id=cancelButton></div>') +
     "</div>";
 
-  // Set the modal title
   modal_title.innerHTML = `<span style="color:${warningTitleColor};font-weight: ${warningTitleFontWeight};font-size: ${warningFontSize};background-color:${warningBackgroundColor};font-family:${warningTitleFont};">${warningPrefix}${
     allowHTML ? header : escapeHTML(header)
   }${warningSuffix}</span>`;
@@ -258,7 +263,6 @@ function messagebox_warning(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Attach the onclick event handler for the OK button
   const okButton = document.getElementById("okButton");
   okButton.onclick = function () {
     closeModal(modal);
@@ -267,7 +271,6 @@ function messagebox_warning(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Attach the onclick event handler for the Cancel button
   const cancelButton = document.getElementById("cancelButton");
   cancelButton.onclick = function () {
     closeModal(modal);
@@ -276,14 +279,13 @@ function messagebox_warning(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Open the modal
   openModal(modal);
 }
 
 function messagebox_error(header, detail, buttons, options, allowHTML) {
   overlay.onclick = null;
   closeButtonElement.onclick = null;
-  // Display the detail and add an "OK" button
+
   modal_body.innerHTML =
     (allowHTML ? detail : escapeHTML(detail)) +
     `<br><div style='display: flex; justify-content: ${spaceButtons};'>` +
@@ -317,7 +319,6 @@ function messagebox_error(header, detail, buttons, options, allowHTML) {
       : '<div style="display:None" id=cancelButton></div>') +
     "</div>";
 
-  // Set the modal title
   modal_title.innerHTML = `<span style="color:${errorTitleColor};font-weight: ${errorTitleFontWeight};font-size: ${errorFontSize};background-color:${errorBackgroundColor};font-family:${errorTitleFont};">${errorPrefix}${
     allowHTML ? header : escapeHTML(header)
   }${errorSuffix}</span>`;
@@ -339,7 +340,6 @@ function messagebox_error(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Attach the onclick event handler for the OK button
   const okButton = document.getElementById("okButton");
   okButton.onclick = function () {
     closeModal(modal);
@@ -348,7 +348,6 @@ function messagebox_error(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Attach the onclick event handler for the Cancel button
   const cancelButton = document.getElementById("cancelButton");
   cancelButton.onclick = function () {
     closeModal(modal);
@@ -357,7 +356,6 @@ function messagebox_error(header, detail, buttons, options, allowHTML) {
     }
   };
 
-  // Open the modal
   openModal(modal);
 }
 
@@ -405,8 +403,6 @@ function editModal(config = {}) {
   modalBody.style.color = config.bodyColor || modalBody.style.color;
   modalBody.style.background =
     config.bodyBackgroundColor || modalBody.style.backgroundColor;
-    console.log(config.bodyBackgroundColor)
-    console.log(modalBody.style.backgroundColor)
 
   customModal.style.background =
     config.backgroundColor || customModal.style.background;
@@ -466,7 +462,7 @@ function escapeHTML(input) {
       case '"':
         return "&quot;";
       case "'":
-        return "&#39;"; // Use '&#39;' for apostrophe
+        return "&#39;";
       default:
         return match;
     }
