@@ -8,7 +8,8 @@ You could use a whole framework like react for this simple task but this is real
 
 You have three options now:  
 __First option:__ Using the default html dialog with `alert("Hello World")` for example. But this is ugly as hell and does not look quite professional.  
-__Second option:__ Code your own custom css messagebox. Nothing wrong with that  
+__Second option:__ Code your own custom css messagebox. Nothing wrong with that   
+
 Or the in my opinion __best option__: Using this lightweight library to get easy access to good looking messageboxes.  
 And if you don't like the default design, you can change almost every aspect of the messagebox. Like the colors, font, size, spacing, and so on.  
 And you are not limited to display the user static text, you can use your own html, css and Javascript in the messagebox.
