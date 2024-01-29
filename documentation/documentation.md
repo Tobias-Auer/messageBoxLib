@@ -267,24 +267,28 @@ All options to modify the title bar:
 - <strong>errorPrefix</strong>
 - <strong>errorSuffix</strong>  
 <br>
+
 - <strong>infoTitleColor</strong>
 - <strong>infoTitleFont</strong>
 - <strong>infoTitleFontWeight</strong>
 - <strong>infoBackgroundColor</strong>
 - <strong>infoFontSize</strong>  
 <br>
+
 - <strong>warningTitleColor</strong>
 - <strong>warningTitleFont</strong>
 - <strong>warningTitleFontWeight</strong>
 - <strong>warningBackgroundColor</strong>
 - <strong>warningFontSize</strong>  
 <br>
+
 - <strong>errorTitleColor</strong>
 - <strong>errorTitleFont</strong>
 - <strong>errorTitleFontWeight</strong>
 - <strong>errorBackgroundColor</strong>
 - <strong>errorFontSize</strong>  
 <br>
+
 - closeButtonBackgroundColor
 - closeButtonColor
 - closeButtonText
@@ -326,7 +330,8 @@ Last but not least, there are plenty of options for the buttons:
 - <strong>confirmationButtonMargin</strong>  
 - <strong>confirmationButtonCursor</strong>  
 - <strong>confirmationButtonBorderRadius  </strong>  
-<br>
+<br>  
+
 - <strong>cancelButtonBackgroundColor</strong>  
 - <strong>cancelButtonBorder</strong>  
 - <strong>cancelButtonColor</strong>  
@@ -337,8 +342,9 @@ Last but not least, there are plenty of options for the buttons:
 - <strong>cancelButtonFontSize</strong>  
 - <strong>cancelButtonMargin</strong>  
 - <strong>cancelButtonCursor</strong>  
-- <strong>cancelButtonBorderRadius  </strong>  
-<br>
+- <strong>cancelButtonBorderRadius </strong>  
+<br>  
+
 - <strong>spaceButtons</strong>  
 
 Most of them should be self explaining or just try them out if you are curious what they do exactly.
