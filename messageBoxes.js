@@ -127,8 +127,6 @@ function initMsgBoxes() {
   modal_title = document.getElementById("modal-title");
   modal = document.getElementById("custom-modal");
   closeButtonElement = document.getElementById("custom-close-button");
-
-  console.log(overlay);
 }
 
 /////
