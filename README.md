@@ -9,16 +9,12 @@ Or, maybe, just maybe, take a quick look at the [documentation](https://github.c
 I promise, it isn't that bad.  
  
 
-To embed the files into your project you could download them or use the following links:  
+To embed the file into your project you could download it or use the following link:  
 ```
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Tobias-Auer/messageBoxLib/style.css" />
-
 <script src="https://cdn.jsdelivr.net/gh/Tobias-Auer/messageBoxLib/messageBoxes.js" defer></script>
 ```  
 
-Or use the shortend links (may take longer to load):  
+Or use the shortend link (may take longer to load):  
 ```
-<link rel="stylesheet" href="https://bit.ly/MsgCSS" />
-
 <script src="https://bit.ly/MsgJS" defer></script>
 ```

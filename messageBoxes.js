@@ -13,7 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+var link = document.createElement("link");
+link.rel = "stylesheet";
+link.type = "text/css";
+link.href = "https://cdn.jsdelivr.net/gh/Tobias-Auer/messageBoxLib/style.css";
 
+link.onload = function () {
+  initMsgBoxes();
+};
+document.head.appendChild(link);
 var infoPrefix = "🛈 ";
 var infoSuffix = " 🛈";
 var warningPrefix = "⚠ ";
@@ -64,50 +72,70 @@ var cancelButtonCursor = "pointer";
 var cancelButtonBorderRadius = "4px";
 
 var spaceButtons = "space-between";
+var customModal,
+  modalHeader,
+  title,
+  closeButton,
+  modalBody,
+  customOverlay,
+  overlay,
+  modal_body,
+  modal_title,
+  modal,
+  closeButtonElement;
 
-var customModal = document.createElement("div");
-customModal.className = "custom-modal";
-customModal.id = "custom-modal";
-customModal.style.background = "rgb(210,230,240)";
+function initMsgBoxes() {
+  customModal = document.createElement("div");
+  customModal.className = "custom-modal";
+  customModal.id = "custom-modal";
+  customModal.style.background = "rgb(210,230,240)";
 
-var modalHeader = document.createElement("div");
-modalHeader.className = "modal-header";
+  modalHeader = document.createElement("div");
+  modalHeader.className = "modal-header";
 
-var title = document.createElement("div");
-title.className = "title";
-title.id = "modal-title";
-title.style.margin = "auto";
-title.textContent = "(ERROR)";
+  title = document.createElement("div");
+  title.className = "title";
+  title.id = "modal-title";
+  title.style.margin = "auto";
+  title.textContent = "(ERROR)";
 
-var closeButton = document.createElement("button");
-closeButton.className = "close-button";
-closeButton.setAttribute("data-close-button", "");
-closeButton.id = "custom-close-button";
-closeButton.textContent = "×";
+  closeButton = document.createElement("button");
+  closeButton.className = "close-button";
+  closeButton.setAttribute("data-close-button", "");
+  closeButton.id = "custom-close-button";
+  closeButton.textContent = "×";
 
-modalHeader.appendChild(title);
-modalHeader.appendChild(closeButton);
+  modalHeader.appendChild(title);
+  modalHeader.appendChild(closeButton);
 
-var modalBody = document.createElement("div");
-modalBody.className = "modal-body";
-modalBody.id = "modal-content";
-modalBody.textContent = "(ERROR)";
+  modalBody = document.createElement("div");
+  modalBody.className = "modal-body";
+  modalBody.id = "modal-content";
+  modalBody.textContent = "(ERROR)";
 
-customModal.appendChild(modalHeader);
-customModal.appendChild(modalBody);
+  customModal.appendChild(modalHeader);
+  customModal.appendChild(modalBody);
 
-document.body.insertBefore(customModal, document.body.firstChild);
+  document.body.insertBefore(customModal, document.body.firstChild);
+  customOverlay = document.createElement("div");
 
-var customOverlay = document.createElement("div");
-customOverlay.id = "custom-overlay";
-document.body.insertBefore(customOverlay, document.body.firstChild);
+  customOverlay.id = "custom-overlay";
+  document.body.insertBefore(customOverlay, document.body.firstChild);
+
+  overlay = document.getElementById("custom-overlay");
+  modal_body = document.getElementById("modal-content");
+  modal_title = document.getElementById("modal-title");
+  modal = document.getElementById("custom-modal");
+  closeButtonElement = document.getElementById("custom-close-button");
+
+  console.log(overlay);
+}
 
 /////
 
 function openModal(modal) {
   if (modal == null) return;
   modal.classList.add("active");
-  const overlay = document.getElementById("custom-overlay");
   overlay.classList.add("active");
 }
 
@@ -116,12 +144,6 @@ function closeModal(modal) {
   modal.classList.remove("active");
   overlay.classList.remove("active");
 }
-
-const overlay = document.getElementById("custom-overlay");
-const modal_body = document.getElementById("modal-content");
-const modal_title = document.getElementById("modal-title");
-const modal = document.getElementById("custom-modal");
-const closeButtonElement = document.getElementById("custom-close-button");
 
 function messagebox_info(header, detail, buttons, options, allowHTML) {
   overlay.onclick = null;
