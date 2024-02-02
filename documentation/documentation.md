@@ -307,9 +307,12 @@ But thats not all there are also some options to modify the body of the messageb
 - <strong>bodyFontSize</strong>  
 - <strong>bodyFontWeight</strong>  
 - <strong>bodyColor</strong>  
-- <strong>bodyBackgroundColor</strong>  
+- <strong>bodyBackgroundColor</strong>
 
-To be honest, five options aren't that much, but it should be enough for the most projects and don't forget that you can use your own css if you really want to.
+And one option to configure the background for the whole messagebox:  
+- <strong>backgroundColor</strong>  
+
+To be honest, these options aren't that much, but it should be enough for the most projects and don't forget that you can use your own css if you really want to.
 
 For example you could add  
 `backgroundColor: "linear-gradient(50deg,rgb(85, 161, 132) 0%,rgb(3, 174, 253) 60%,rgb(85, 161, 132) 99%)"`  
