@@ -18,8 +18,7 @@ And you are not limited to display the user static text, you can use your own ht
 
 First of all, it is super easy to include this into your project. All you have to do is add the following two lines to the head part of your html file:  
 ```
-<link rel="stylesheet" href="style.css" />
-<script src="messageBoxes.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Tobias-Auer/messageBoxLib/messageBoxes.js" defer></script>
 ```
 Additionaly, it is really lightweight. All necessary files are in total under 25 KB, which is not much at all.
 
