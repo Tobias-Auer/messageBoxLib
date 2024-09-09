@@ -16,7 +16,7 @@ And you are not limited to display the user static text, you can use your own ht
 
 ### What are the advantages using this library?
 
-First of all, it is super easy to include this into your project. All you have to do is add the following two lines to the head part of your html file:  
+First of all, it is super easy to include this into your project. All you have to do is add the following line to the head part of your html file:  
 ```
 <script src="https://cdn.jsdelivr.net/gh/Tobias-Auer/messageBoxLib/messageBoxes.js" defer></script>
 ```
